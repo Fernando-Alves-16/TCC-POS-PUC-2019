@@ -6,7 +6,7 @@
 	// verifica se CPF esta preenchido
 	if ($cpf0 == "") {
 		echo "<script language='javascript' type='text/javascript'>
-		alert('Campo CPF nao preenchido');window.location.href='alterarcliente.html';
+		alert('Campo CPF nao preenchido');window.location.href='excluircliente.html';
 		</script>";
 		die();
 	}
@@ -14,7 +14,7 @@
 	// verifica se CPF e numerico
 	if (is_numeric($cpf0) == FALSE) {
 		echo "<script language='javascript' type='text/javascript'>
-		alert('Campo CPF nao é numérico');window.location.href='alterarcliente.html';
+		alert('Campo CPF nao é numérico');window.location.href='excluircliente.html';
 		</script>";
 		die();
 	}
