@@ -1,0 +1,55 @@
+<html>
+<head>
+<?php
+	// para utilizar o Email e Senha na interface 
+	// de usuario de acesso ao sistema
+	session_start();
+	if ( (!isset ($_SESSION['email']) == true) and (!isset ($SESSION['senha']) == true) )
+	{	
+		unset($_SESSION['email']);
+		unset($_SESSION['senha']);
+		header('location:index.html');
+	}
+	$logado = $_SESSION['email'];
+?>
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title> Sistema InfoCompras </title>
+</head>
+<body>
+<!-- label> Interface de usuario Consultar Cliente </label -->
+<br><br><label> Sistema InfoCompras </label><br>
+<br><label> Manter Cliente </label><br>
+<br><label> Consultar Cliente </label><br><br>
+<!-- label> Realizacao da Consulta de Cliente </label -->
+<p id="demo"></p>
+<br>
+<script>
+var xmlhttp, email1;
+//email1 = { "email":$_SESSION['email'] };
+//dbParam = JSON.stringify(email1);
+xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function()
+{
+	if (this.readyState == 4 && this.status == 200){
+	document.getElementById("demo").innerHTML = this.responseText;
+	}
+};
+xmlhttp.open("GET", "chamar_consulta.php", true);
+xmlhttp.send();
+</script>
+<!-- label> Acesso Interface de usuario Manter Cliente </label -->
+<a href="mantercliente.html">Voltar</a><br><br>
+<!-- label> Acesso Interface de usuario Sair Sistema </label -->
+<a href="index.html">Sair</a>
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
